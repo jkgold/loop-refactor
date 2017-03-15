@@ -20,15 +20,27 @@ module.exports = {
     return sum;
   },
 
-  someObjsContainProp: (arr, prop) => {
-    for(var i = 0; i < arr.length; i++){
-      if(arr[i].hasOwnProperty(prop)){
-        return true;
-      }
-    }
-    return false;
-  },
+sum: (arr, base) => {
+    return arr.reduce(function(acc, base) {
+  return acc + base;
+}, base);
 
+},
+
+someObjsContainProp: (arr, prop) => {
+return arr.some((array)=>{
+if(array.hasOwnProperty(prop))
+return true;
+});
+},
+    // for(var i = 0; i < arr.length; i++){
+    //   if(arr[i].hasOwnProperty(prop)){
+    //     return true;
+    //   }
+    // }
+    // return false;
+
+  //
   convertNameArrayToObject: (arr) => {
     let nameObj = [];
     for(var i = 0; i < arr.length; i++){
@@ -39,6 +51,14 @@ module.exports = {
     }
     return nameObj;
   },
+convertNameArrayToObject: (arr) => {
+return arr.map(obj => {
+let nameObj= {};
+nameObj.first = obj[0];
+nameObj.last = obj[1];
+return nameObj;
+});
+},
 
   objContainsProp: (arr, prop) => {
     for (var i = 0; i < arr.length; i++){
@@ -48,7 +68,13 @@ module.exports = {
     }
     return true;
   },
-
+  objContainsProp: (arr, prop) => {
+return arr.every((array)=>{
+if(array.hasOwnProperty(prop))
+return true;
+});
+},
+  //
   stringMatch: (arr, str) => {
     let matches = [];
     for(var i = 0; i < arr.length; i++){
@@ -58,4 +84,9 @@ module.exports = {
     }
     return matches;
   },
+  stringMatch: (arr, str) => {
+return arr.filter(i => {
+return (i.match(str));
+  });
+}
 };
